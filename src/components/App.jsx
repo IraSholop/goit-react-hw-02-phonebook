@@ -2,6 +2,8 @@ import React from 'react';
 import { ContactList } from './ContactList/ContactList';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
+import { nanoid } from 'nanoid';
+// import { useId } from 'react';
 
 export class App extends React.Component {
   state = {
@@ -21,6 +23,7 @@ export class App extends React.Component {
   };
 
   formSubmitHandler = data => {
+    const newData = { ...data, id: nanoid() };
     const nameFilter = this.state.contacts.filter(contact =>
       contact.name.includes(data.name)
     );
@@ -28,7 +31,7 @@ export class App extends React.Component {
       alert(`${data.name} is already in contacts`);
     } else {
       this.setState(prevState => ({
-        contacts: [data, ...prevState.contacts],
+        contacts: [newData, ...prevState.contacts],
       }));
     }
   };

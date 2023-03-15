@@ -1,5 +1,4 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 
 export class ContactForm extends React.Component {
@@ -12,7 +11,6 @@ export class ContactForm extends React.Component {
     const { name, value } = e.currentTarget;
     this.setState({
       [name]: value,
-      id: nanoid(),
     });
   };
 
